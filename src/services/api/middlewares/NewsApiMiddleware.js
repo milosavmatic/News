@@ -7,35 +7,38 @@ import {
 } from '../../../scenes/news/duck/types';
 
 
-const NewsApiMiddlware = ({ dispatch }) => (next) => async (action) => {
-    const { type = '' } = action
-    switch (type)
+const NewsApiMiddleware = ({dispatch}) => (next) => async (action) => {
+    const {type = ''} = action
+    switch (type) {
         case API_LOAD_NEWS_REQUEST:
-try {
-    const response = await fetch(`${BASE_URL}top-headlines?country=en`, {
-        method: methodType.get,
-        headers: authHeaders(),
-    })
+            try {
+                const { countryNews } = action.payload
+                const response = await fetch(`${BASE_URL}top-headlines?country=${countryNews}`, {
+                    method: methodType.get,
+                    headers: authHeaders(),
+                })
 
-    const responseJson = await response.json()
-    const { articles } = responseJson
+                const responseJson = await response.json()
+                const {articles} = responseJson
 
-    if(articles) {
-        dispatch({
-            type: API_LOAD_NEWS_REQUEST_SUCCESS,
-            payload: { articles }
-        })
-    }
+                if (articles) {
+                    dispatch({
+                        type: API_LOAD_NEWS_REQUEST_SUCCESS,
+                        payload: {articles}
+                    })
+                }
 
-} catch (error) {
-   dispatch({
-       type: API_LOAD_NEWS_REQUEST_ERROR,
-       payload: {error}
-   })
-}
-break
+            } catch (error) {
+                dispatch({
+                    type: API_LOAD_NEWS_REQUEST_ERROR,
+                    payload: {error}
+                })
+            }
+            break
         default:
             break
+    }
+    next(action)
 }
 
-export default NewsApiMiddlware
+export default NewsApiMiddleware

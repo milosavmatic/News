@@ -1,14 +1,14 @@
-import { API_LOAD_NEWS_REQUEST_SUCCESS } from './types';
+import { API_LOAD_CATEGORY_NEWS_SUCCESS } from './types';
 
 
 const initialsState = {
-    article: [],
+    articlesCategory: [],
 }
 
 
 const reducer = (state = initialsState, action) => {
     switch (action.type && action.type) {
-        case API_LOAD_NEWS_REQUEST_SUCCESS:
+        case API_LOAD_CATEGORY_NEWS_SUCCESS:
             return {...state, ...action.payload}
         default:
             return state
