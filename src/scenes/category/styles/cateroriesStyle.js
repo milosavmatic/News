@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export const CategoriesStyle = StyleSheet.create({
     container: {
@@ -6,13 +6,13 @@ export const CategoriesStyle = StyleSheet.create({
     },
     navTape: {
         width: '100%',
-        height: '7%',
+        height: '5%',
         flexDirection: 'row'
 
     },
     itemContainer: {
-        width: 420,
-        height: '100%'
+        width: Dimensions.get('window').width > 320 ? 410 : 330,
+        height: Dimensions.get('window').height > 535 ? '100%' : '60%'
     },
     itemTitle: {
         width: '90%',
@@ -20,9 +20,11 @@ export const CategoriesStyle = StyleSheet.create({
         textAlign: 'center'
     },
     image: {
-        width: '90%',
+        width: '100%',
         height: '40%',
-        resizeMode: "contain"
+        resizeMode: "contain",
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     itemDescription: {
         width: '90%',

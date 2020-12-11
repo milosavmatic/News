@@ -11,8 +11,12 @@ const NewsStyle = StyleSheet.create({
         width: '100%',
         height: '5%',
         flexDirection: 'row'
-
-    }
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 5
+    },
 })
 
 export default NewsStyle;

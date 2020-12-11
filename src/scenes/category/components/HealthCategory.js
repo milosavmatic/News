@@ -5,24 +5,23 @@ import { View, Text, FlatList, TouchableOpacity, Image,  } from 'react-native'
 import { styles } from '../styles';
 
 
-class Category extends React.Component {
+class GeneralCategory extends React.Component {
     componentDidMount() {
-        const { category } = this.props
-        this.onChangeCategoryCountry('us', category )
-    }
-
-    onChangeCategoryCountry = (country, category) => {
-        const {loadCategory} = this.props
-        loadCategory(country, category)
+        const {loadHealthCategory} = this.props
+        loadHealthCategory()
     }
 
     renderItem = ({item}) => {
+        const { navigation } = this.props
         return (
             <View style={styles.itemContainer}>
                 <Text style={styles.itemTitle}>{item.title}</Text>
                 <Image source={{uri: item.urlToImage}} style={styles.image}/>
-                <Text style={styles.description}>{item.description}</Text>
-                <TouchableOpacity style={styles.itemButton}>
+                <Text style={styles.itemDescription}>{item.description}</Text>
+                <TouchableOpacity style={styles.itemButton} onPress={() => navigation.navigate('Details News', {
+                    item
+                })
+                }>
                     <Text style={styles.itemTextButton}>
                         {'More >'}
                     </Text>
@@ -32,12 +31,16 @@ class Category extends React.Component {
     }
 
     render() {
-        const {articlesCategory, category} = this.props
+        const { healthCategory, navigation } = this.props
+        let category = healthCategory
+        let title = 'Health'
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={{flex: 1, alignItems: 'center'}}><Text
-                    style={{fontSize: 25, fontWeight: 'bold'}}>{category}</Text></TouchableOpacity>
-                <FlatList contentContainerStyle={{height: 400}} data={articlesCategory.slice(0, 5)}
+                <TouchableOpacity style={{flex: 1, alignItems: 'center'}} onPress={() => navigation.navigate('Category Container', {
+                    category, title
+                })}><Text
+                    style={{fontSize: 25, fontWeight: 'bold'}}>{'Health'}</Text></TouchableOpacity>
+                <FlatList contentContainerStyle={{height: 400}} data={healthCategory.slice(0, 5)}
                           renderItem={this.renderItem} keyExtractor={item => item.title} horizontal={true}
                 />
             </View>
@@ -51,4 +54,4 @@ const mapStateToProps = ({category}) => {
 
 export default connect(mapStateToProps, {
     ...actions
-})(Category)
+})(GeneralCategory)

@@ -1,29 +1,60 @@
 import React from 'react'
-import Category from './components/Category';
+import { connect } from 'react-redux'
 import { View, ScrollView } from 'react-native';
 import { styles } from './styles';
 import Buttons from '../../components/buttons/buttons';
-import {categories } from './duck/selectors';
+import * as actions from './duck/actions'
+import EntertainmentCategory from './components/EntertainmentCategory';
+import GeneralCategory from './components/GeneralCategory';
+import HealthCategory from './components/HealthCategory';
+import ScienceCategory from './components/ScienceCategory';
+import SportCategory from './components/SportCategory';
+import TechnologyCategory from './components/TechnologyCategory';
 
 class CategoriesScene extends React.PureComponent {
+    onChangeCategoryCountry = (country) => {
+        const {
+            loadEntertainmentCategory,
+            loadGeneralCategory,
+            loadHealthCategory,
+            loadScienceCategory,
+            loadSportCategory,
+            loadTechnologyCategory
+        } = this.props
+        loadEntertainmentCategory(country)
+        loadGeneralCategory(country)
+        loadHealthCategory(country)
+        loadScienceCategory(country)
+        loadSportCategory(country)
+        loadTechnologyCategory(country)
+    }
+
     render() {
-        return(
+        const { navigation } = this.props
+        return (
             <View style={styles.container}>
                 <View style={styles.navTape}>
                     <Buttons title={"GB"} onNavigation={() => this.onChangeCategoryCountry("gb")}/>
                     <Buttons title={'US'} onNavigation={() => this.onChangeCategoryCountry("us")}/>
                 </View>
                 <ScrollView>
-                    <View>
-                        {categories.map(category =>
-                        <Category category={category} key={category}/>
-                        )}
-
-                    </View>
+                    <EntertainmentCategory navigation={navigation}/>
+                    <GeneralCategory navigation={navigation}/>
+                    <HealthCategory navigation={navigation}/>
+                    <ScienceCategory navigation={navigation}/>
+                    <SportCategory navigation={navigation}/>
+                    <TechnologyCategory navigation={navigation}/>
                 </ScrollView>
             </View>
         )
     }
 }
 
-export default CategoriesScene
+
+const mapStateToProps = ({category}) => {
+    return {...category}
+}
+
+export default connect(mapStateToProps, {
+    ...actions
+})(CategoriesScene)

@@ -1,27 +1,27 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { colors } from '../../../styleguide'
 
 const itemStyle = StyleSheet.create({
     container: {
         width: '100%',
-        height: 600,
+        height: Dimensions.get('window').height < 800 ? 500 :  500,
         paddingLeft: '5%',
         paddingRight: '5%'
     },
     image: {
         width: '100%',
-        height: '50%',
+        resizeMode: 'contain',
+        height: Dimensions.get('window').height < 800 ? '30%' :  '50%',
         borderRadius: 5,
+        alignItems: 'center'
     },
     title: {
         fontSize: 24,
         fontWeight: "400",
         textAlign: 'center',
-        marginBottom: 10,
         marginTop: 20
     },
     description: {
-        marginTop: 20,
         fontSize: 15,
         textAlign: 'center'
     },
