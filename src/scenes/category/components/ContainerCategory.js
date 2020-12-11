@@ -24,12 +24,38 @@ class ContainerCategory extends React.Component {
     }
 
     onChangeCountry = (country) => {
-        const {loadEntertainmentCategory} = this.props
+        const {loadEntertainmentCategory, loadGeneralCategory, loadHealthCategory, loadScienceCategory, loadSportCategory, loadTechnologyCategory} = this.props
         loadEntertainmentCategory(country)
+        loadGeneralCategory(country)
+        loadHealthCategory(country)
+        loadScienceCategory(country)
+        loadSportCategory(country)
+        loadTechnologyCategory(country)
+    }
+
+     viewCategory = () => {
+        const {title } = this.props.route.params
+        const {entertainmentCategory, generalCategory, healthCategory,scienceCategory, sportCategory, technologyCategory } = this.props
+        switch (title) {
+            case 'Entertainment':
+                return entertainmentCategory
+            case 'General':
+                return generalCategory
+            case 'Health':
+                return healthCategory
+            case 'Science':
+                return scienceCategory
+            case 'Sport':
+                return sportCategory
+            case 'Technology':
+                return technologyCategory
+            default:
+                return []
+        }
     }
 
     render() {
-        const { category, title } = this.props.route.params
+        const { title } = this.props.route.params
         return (
             <View style={styles.container}>
                 <View style={styles.navTape}>
@@ -37,7 +63,7 @@ class ContainerCategory extends React.Component {
                     <Buttons title={'US'} onNavigation={() => this.onChangeCountry("us")}/>
                 </View>
                 <Text style={styles.title}>{title}</Text>
-                <FlatList  data={category} renderItem={this.renderItem} keyExtractor={item => item.title}/>
+                <FlatList  data={this.viewCategory()} renderItem={this.renderItem} keyExtractor={item => item.title}/>
             </View>
         )
     }
