@@ -4,7 +4,7 @@ export const defaultHeaders = {
 }
 
 export const authHeaders = () => {
-    const keyApi = '0b088f7f7d834a1b9f3f064da2ab1406'
+    const keyApi = '8ac195c35e434f0fbfdb46a0953e36e2'
     return {
         ...defaultHeaders,
         Authorization: `Bearer ${keyApi}`

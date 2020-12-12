@@ -12,7 +12,7 @@ export const CategoriesStyle = StyleSheet.create({
     },
     itemContainer: {
         width: Dimensions.get('window').width > 320 ? 410 : 330,
-        height: Dimensions.get('window').height > 535 ? '100%' : '60%'
+        height: Dimensions.get('window').height > 535 ? 450 : 480
     },
     itemTitle: {
         width: '90%',
@@ -21,10 +21,7 @@ export const CategoriesStyle = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: '40%',
-        resizeMode: "contain",
-        alignItems: 'center',
-        justifyContent: 'center'
+        height: '50%',
     },
     itemDescription: {
         width: '90%',

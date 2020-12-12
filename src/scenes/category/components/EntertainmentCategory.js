@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../duck/actions'
-import { View, Text, FlatList, TouchableOpacity, Image, Dimensions} from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, Image, Dimensions } from 'react-native'
+import Carousel from 'react-native-snap-carousel';
 import { styles } from '../styles';
 
 
@@ -12,7 +13,7 @@ class EntertainmentCategory extends React.Component {
     }
 
     renderItem = ({item}) => {
-        const { navigation } = this.props
+        const {navigation} = this.props
         return (
             <View style={styles.itemContainer}>
                 <Text style={styles.itemTitle}>{item.title}</Text>
@@ -30,19 +31,22 @@ class EntertainmentCategory extends React.Component {
         )
     }
 
+
     render() {
-        const {entertainmentCategory, navigation } = this.props
-        let category = entertainmentCategory
+        const {entertainmentCategory, navigation} = this.props
+        let category = entertainmentCategory.slice(0, 5)
         let title = 'Entertainment'
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={{flex: 1, alignItems: 'center'}} onPress={() => navigation.navigate('Category Container', {
-                  category, title
-                })}><Text
+                <TouchableOpacity style={{flex: 1, alignItems: 'center'}}
+                                  onPress={() => navigation.navigate('Category Container', {
+                                      category, title
+                                  })}><Text
                     style={{fontSize: 25, fontWeight: 'bold'}}>{'Entertainment'}</Text></TouchableOpacity>
-                <FlatList contentContainerStyle={{height: 400}} data={entertainmentCategory.slice(0, 5)}
-                          renderItem={this.renderItem} keyExtractor={item => item.title} horizontal={true}
-                />
+                <Carousel data={entertainmentCategory.slice(0, 5)} renderItem={this.renderItem}
+                          sliderWidth={Dimensions.get('window').width}
+                          itemWidth={Dimensions.get('window').width} autoplay={true} enableMomentum={false}
+                          lockScrollWhileSnapping={true} autoplayInterval={3000} loop={true} enableSnapје={true}/>
             </View>
         )
     }

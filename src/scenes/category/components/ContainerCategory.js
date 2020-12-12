@@ -13,7 +13,7 @@ class ContainerCategory extends React.Component {
     }
 
     renderItem = ({item}) => {
-        const { navigation } = this.props
+        const {navigation} = this.props
         return (
             <ItemNewsContainer title={item.title} description={item.description} image={item.urlToImage}
                                titleButton={'More >'} onChangeScene={() => navigation.navigate('Details News', {
@@ -24,7 +24,14 @@ class ContainerCategory extends React.Component {
     }
 
     onChangeCountry = (country) => {
-        const {loadEntertainmentCategory, loadGeneralCategory, loadHealthCategory, loadScienceCategory, loadSportCategory, loadTechnologyCategory} = this.props
+        const {
+            loadEntertainmentCategory,
+            loadGeneralCategory,
+            loadHealthCategory,
+            loadScienceCategory,
+            loadSportCategory,
+            loadTechnologyCategory
+        } = this.props
         loadEntertainmentCategory(country)
         loadGeneralCategory(country)
         loadHealthCategory(country)
@@ -33,9 +40,16 @@ class ContainerCategory extends React.Component {
         loadTechnologyCategory(country)
     }
 
-     viewCategory = () => {
-        const {title } = this.props.route.params
-        const {entertainmentCategory, generalCategory, healthCategory,scienceCategory, sportCategory, technologyCategory } = this.props
+    viewCategory = () => {
+        const {title} = this.props.route.params
+        const {
+            entertainmentCategory,
+            generalCategory,
+            healthCategory,
+            scienceCategory,
+            sportCategory,
+            technologyCategory
+        } = this.props
         switch (title) {
             case 'Entertainment':
                 return entertainmentCategory
@@ -55,7 +69,7 @@ class ContainerCategory extends React.Component {
     }
 
     render() {
-        const { title } = this.props.route.params
+        const {title} = this.props.route.params
         return (
             <View style={styles.container}>
                 <View style={styles.navTape}>
@@ -63,7 +77,8 @@ class ContainerCategory extends React.Component {
                     <Buttons title={'US'} onNavigation={() => this.onChangeCountry("us")}/>
                 </View>
                 <Text style={styles.title}>{title}</Text>
-                <FlatList  data={this.viewCategory()} renderItem={this.renderItem} keyExtractor={item => item.title}/>
+                <FlatList data={this.viewCategory()} renderItem={this.renderItem} keyExtractor={item => item.title}
+                />
             </View>
         )
     }
