@@ -52,13 +52,8 @@ const TabNavigator = () => {
             }}
         >
             <Tab.Screen name={'News'} component={NewsScene}/>
-            <Tab.Screen name={'Category'} component={CategoriesScene} screeOptions={{
-                headerTitle: 'Categories'
-            }}/>
-            <Tab.Screen name={'Search'} component={SearchScene} options={{
-                headerTitle: 'Search',
-                title: 'Search'
-            }}/>
+            <Tab.Screen name={'Category'} component={CategoriesScene}/>
+            <Tab.Screen name={'Search'} component={SearchScene}/>
         </Tab.Navigator>
     )
 }

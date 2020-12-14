@@ -9,33 +9,35 @@ import Buttons from '../../components/buttons/buttons';
 
 class NewsScene extends React.Component {
     componentDidMount() {
-       this.onChangeCountry('gb')
+        this.onChangeCountry('gb')
     }
 
     renderItem = ({item}) => {
-        const { navigation } = this.props
+        const {navigation} = this.props
         return (
             <ItemNewsContainer title={item.title} description={item.description} image={item.urlToImage}
                                titleButton={'More >'} onChangeScene={() => navigation.navigate('Details News', {
-                                   item
+                item
             })}/>
         )
     }
 
     onChangeCountry = (country) => {
         const {loadNews} = this.props
-            loadNews(country)
+        loadNews(country)
     }
 
     render() {
-        const {articles} = this.props
+        const {articles, countryNews} = this.props
         return (
             <View style={styles.container}>
                 <View style={styles.navTape}>
-                    <Buttons title={"GB"} onNavigation={() => this.onChangeCountry("gb")}/>
-                    <Buttons title={'US'} onNavigation={() => this.onChangeCountry("us")}/>
+                    <Buttons title={"GB"} onNavigation={() => this.onChangeCountry("gb")}
+                             isActive={countryNews === 'gb'}/>
+                    <Buttons title={'US'} onNavigation={() => this.onChangeCountry("us")}
+                             isActive={countryNews === 'us'}/>
                 </View>
-                <FlatList  data={articles} renderItem={this.renderItem} keyExtractor={item => item.title}/>
+                <FlatList data={articles} renderItem={this.renderItem} keyExtractor={item => item.title}/>
             </View>
         )
     }

@@ -10,6 +10,12 @@ export const CategoriesStyle = StyleSheet.create({
         flexDirection: 'row'
 
     },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 5,
+        textAlign: 'center'
+    },
     itemContainer: {
         width: Dimensions.get('window').width > 320 ? 410 : 330,
         height: Dimensions.get('window').height > 535 ? 450 : 480

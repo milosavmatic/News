@@ -31,11 +31,12 @@ class CategoriesScene extends React.PureComponent {
 
     render() {
         const { navigation } = this.props
+        const { country } = this.props
         return (
             <View style={styles.container}>
                 <View style={styles.navTape}>
-                    <Buttons title={"GB"} onNavigation={() => this.onChangeCategoryCountry("gb")}/>
-                    <Buttons title={'US'} onNavigation={() => this.onChangeCategoryCountry("us")}/>
+                    <Buttons title={"GB"} onNavigation={() => this.onChangeCategoryCountry("gb")} isActive={country === 'gb'}/>
+                    <Buttons title={'US'} onNavigation={() => this.onChangeCategoryCountry("us")} isActive={country === 'us'}/>
                 </View>
                 <ScrollView>
                     <EntertainmentCategory navigation={navigation}/>

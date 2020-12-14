@@ -21,10 +21,11 @@ const NewsApiMiddleware = ({dispatch}) => (next) => async (action) => {
                 const responseJson = await response.json()
                 const {articles} = responseJson
 
+
                 if (articles) {
                     dispatch({
                         type: API_LOAD_NEWS_REQUEST_SUCCESS,
-                        payload: {articles}
+                        payload: {articles, countryNews}
                     })
                 }
 

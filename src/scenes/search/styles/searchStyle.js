@@ -8,7 +8,7 @@ const searchStyle = StyleSheet.create({
         borderWidth: 1,
         width: '90%',
         marginTop: '15%',
-        marginBottom: '15%',
+        marginBottom: '2%',
         borderRadius: 30,
         padding: 10
     }

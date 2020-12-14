@@ -44,7 +44,7 @@ const CategoryMiddleware = ({dispatch}) => next => async action => {
                 if (entertainmentCategory) {
                     dispatch({
                         type: API_LOAD_ENTERTAINMENT_CATEGORY_NEWS_SUCCESS,
-                        payload: {entertainmentCategory}
+                        payload: {entertainmentCategory, country}
                     })
                 }
 
@@ -74,7 +74,7 @@ const CategoryMiddleware = ({dispatch}) => next => async action => {
                 if (generalCategory) {
                     dispatch({
                         type: API_LOAD_GENERAL_CATEGORY_NEWS_SUCCESS,
-                        payload: {generalCategory}
+                        payload: {generalCategory, country}
                     })
                 }
 
@@ -104,7 +104,7 @@ const CategoryMiddleware = ({dispatch}) => next => async action => {
                 if (healthCategory) {
                     dispatch({
                         type: API_LOAD_HEALTH_CATEGORY_NEWS_SUCCESS,
-                        payload: {healthCategory}
+                        payload: {healthCategory, country}
                     })
                 }
 
@@ -134,7 +134,7 @@ const CategoryMiddleware = ({dispatch}) => next => async action => {
                 if (scienceCategory) {
                     dispatch({
                         type: API_LOAD_SCIENCE_CATEGORY_NEWS_SUCCESS,
-                        payload: {scienceCategory}
+                        payload: {scienceCategory, country}
                     })
                 }
 
@@ -164,7 +164,7 @@ const CategoryMiddleware = ({dispatch}) => next => async action => {
                 if (sportCategory) {
                     dispatch({
                         type: API_LOAD_SPORT_CATEGORY_NEWS_SUCCESS,
-                        payload: {sportCategory}
+                        payload: {sportCategory, country}
                     })
                 }
 
@@ -194,7 +194,7 @@ const CategoryMiddleware = ({dispatch}) => next => async action => {
                 if (technologyCategory) {
                     dispatch({
                         type: API_LOAD_TECHNOLOGY_CATEGORY_NEWS_SUCCESS,
-                        payload: {technologyCategory}
+                        payload: {technologyCategory, country}
                     })
                 }
 

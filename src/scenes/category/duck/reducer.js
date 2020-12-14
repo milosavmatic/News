@@ -14,8 +14,8 @@ const initialsState = {
     healthCategory: [],
     scienceCategory: [],
     sportCategory: [],
-    technologyCategory: []
-
+    technologyCategory: [],
+    country: 'gb'
 }
 
 

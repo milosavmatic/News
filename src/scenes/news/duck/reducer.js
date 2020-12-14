@@ -1,8 +1,9 @@
-import { API_LOAD_NEWS_REQUEST_SUCCESS } from './types';
+import { API_LOAD_NEWS_REQUEST, API_LOAD_NEWS_REQUEST_SUCCESS } from './types';
 
 
 const initialsState = {
     article: [],
+    countryNews: 'gb'
 }
 
 

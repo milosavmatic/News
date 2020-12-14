@@ -8,7 +8,7 @@ const DetailsNews = ({navigation, route}) => {
     return (
         <ScrollView>
             <ItemNewsContainer title={item.title} image={item.urlToImage} description={item.content}
-                               navigationBack={() => navigation.navigate('Top News')} titleBackButton={'< Back'}/>
+                               navigationBack={() => navigation.goBack()} titleBackButton={'< Back'}/>
         </ScrollView>)
 }
 

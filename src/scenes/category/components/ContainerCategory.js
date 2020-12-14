@@ -2,14 +2,15 @@ import React from 'react'
 import { View, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux'
 import * as actions from '../duck/actions'
-import { styles } from '../../news/styles';
+import { styles } from '../styles';
 import ItemNewsContainer from '../../../components/itemNews/itemNewsContiner';
 import Buttons from '../../../components/buttons/buttons'
 
 
-class ContainerCategory extends React.Component {
+class ContainerCategory extends React.PureComponent {
     componentDidMount() {
-        this.onChangeCountry('gb')
+        const {country} = this.props
+        this.onChangeCountry(country)
     }
 
     renderItem = ({item}) => {
@@ -70,14 +71,18 @@ class ContainerCategory extends React.Component {
 
     render() {
         const {title} = this.props.route.params
+        const {country} = this.props
         return (
             <View style={styles.container}>
                 <View style={styles.navTape}>
-                    <Buttons title={"GB"} onNavigation={() => this.onChangeCountry("gb")}/>
-                    <Buttons title={'US'} onNavigation={() => this.onChangeCountry("us")}/>
+                    <Buttons title={"GB"} onNavigation={() => this.onChangeCountry('gb')} isActive={country === 'gb'}/>
+                    <Buttons title={'US'} onNavigation={() => this.onChangeCountry('us')} isActive={country === 'us'}/>
                 </View>
                 <Text style={styles.title}>{title}</Text>
                 <FlatList data={this.viewCategory()} renderItem={this.renderItem} keyExtractor={item => item.title}
+                          initialNumToRender={7} ref={(ref) => {
+                    this.flatListRef = ref;
+                }}
                 />
             </View>
         )

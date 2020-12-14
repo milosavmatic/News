@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../duck/actions'
 import Carousel from 'react-native-snap-carousel';
-import { View, Text,  TouchableOpacity, Image,  } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Platform, Dimensions } from 'react-native'
 import { styles } from '../styles';
 
 
@@ -13,7 +13,7 @@ class GeneralCategory extends React.Component {
     }
 
     renderItem = ({item}) => {
-        const { navigation } = this.props
+        const {navigation} = this.props
         return (
             <View style={styles.itemContainer}>
                 <Text style={styles.itemTitle}>{item.title}</Text>
@@ -31,18 +31,19 @@ class GeneralCategory extends React.Component {
     }
 
     render() {
-        const {generalCategory, navigation } = this.props
+        const {generalCategory, navigation} = this.props
         let category = generalCategory
         let title = 'General'
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={{flex: 1, alignItems: 'center'}} onPress={() => navigation.navigate('Category Container', {
-                    category, title
-                })}><Text
+                <TouchableOpacity style={{flex: 1, alignItems: 'center'}}
+                                  onPress={() => navigation.navigate('Category Container', {
+                                      category, title
+                                  })}><Text
                     style={{fontSize: 25, fontWeight: 'bold'}}>{'General'}</Text></TouchableOpacity>
-                <Carousel data={generalCategory.slice(0, 5)} renderItem={this.renderItem} sliderWidth={600}
-                          itemWidth={600} autoplay={true} enableMomentum={false}
-                          lockScrollWhileSnapping={true} autoplayInterval={3000} loop={true} enableSnapје={true} />
+                <Carousel data={generalCategory.slice(0, 5)} renderItem={this.renderItem} sliderWidth={Dimensions.get('window').width}
+                          itemWidth={Dimensions.get('window').width} autoplay={true} enableMomentum={false}
+                          lockScrollWhileSnapping={true} autoplayInterval={3000} loop={true} enableSnapје={true}/>
             </View>
         )
     }

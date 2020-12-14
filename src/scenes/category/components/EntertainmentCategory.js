@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../duck/actions'
-import { View, Text, FlatList, TouchableOpacity, Image, Dimensions } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Dimensions } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
 import { styles } from '../styles';
 
@@ -45,7 +45,7 @@ class EntertainmentCategory extends React.Component {
                     style={{fontSize: 25, fontWeight: 'bold'}}>{'Entertainment'}</Text></TouchableOpacity>
                 <Carousel data={entertainmentCategory.slice(0, 5)} renderItem={this.renderItem}
                           sliderWidth={Dimensions.get('window').width}
-                          itemWidth={Dimensions.get('window').width} autoplay={true} enableMomentum={false}
+                          itemWidth={Dimensions.get('window').width} autoplay={Platformtrue} enableMomentum={false}
                           lockScrollWhileSnapping={true} autoplayInterval={3000} loop={true} enableSnapје={true}/>
             </View>
         )

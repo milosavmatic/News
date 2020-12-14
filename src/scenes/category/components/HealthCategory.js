@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../duck/actions'
 import Carousel from 'react-native-snap-carousel';
-import { View, Text, FlatList, TouchableOpacity, Image,  } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Dimensions  } from 'react-native'
 import { styles } from '../styles';
 
 
@@ -41,8 +41,8 @@ class GeneralCategory extends React.Component {
                     category, title
                 })}><Text
                     style={{fontSize: 25, fontWeight: 'bold'}}>{'Health'}</Text></TouchableOpacity>
-                <Carousel data={healthCategory.slice(0, 5)} renderItem={this.renderItem} sliderWidth={600}
-                          itemWidth={600} autoplay={true} enableMomentum={false}
+                <Carousel data={healthCategory.slice(0, 5)} renderItem={this.renderItem} sliderWidth={Dimensions.get('window').width}
+                          itemWidth={Dimensions.get('window').width} autoplay={true} enableMomentum={false}
                           lockScrollWhileSnapping={true} autoplayInterval={3000} loop={true} enableSnapје={true} />
             </View>
         )
