@@ -37,7 +37,7 @@ class SportCategory extends React.Component {
         let title = 'Sport'
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={{flex: 1, alignItems: 'center'}} onPress={() => navigation.navigate('Category Container', {
+            <TouchableOpacity style={{flex: 1, alignItems: 'center'}} onPress={() => navigation.navigate('Category Container', {
                     category, title
                 })}><Text
                     style={{fontSize: 25, fontWeight: 'bold'}}>{'Sport'}</Text></TouchableOpacity>

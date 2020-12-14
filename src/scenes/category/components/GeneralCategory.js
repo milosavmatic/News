@@ -41,7 +41,8 @@ class GeneralCategory extends React.Component {
                                       category, title
                                   })}><Text
                     style={{fontSize: 25, fontWeight: 'bold'}}>{'General'}</Text></TouchableOpacity>
-                <Carousel data={generalCategory.slice(0, 5)} renderItem={this.renderItem} sliderWidth={Dimensions.get('window').width}
+                <Carousel data={generalCategory.slice(0, 5)} renderItem={this.renderItem}
+                          sliderWidth={Dimensions.get('window').width}
                           itemWidth={Dimensions.get('window').width} autoplay={true} enableMomentum={false}
                           lockScrollWhileSnapping={true} autoplayInterval={3000} loop={true} enableSnapје={true}/>
             </View>

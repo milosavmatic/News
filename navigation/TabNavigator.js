@@ -31,6 +31,7 @@ const TabNavigator = () => {
                         iconName = focused ? 'ios-list' : 'ios-list'
                     }
 
+
                     return <Ionicons name={iconName} size={25} color={color}/>;
                 },
 
@@ -52,7 +53,9 @@ const TabNavigator = () => {
             }}
         >
             <Tab.Screen name={'News'} component={NewsScene}/>
-            <Tab.Screen name={'Category'} component={CategoriesScene}/>
+            <Tab.Screen name={'Category'} component={CategoriesScene} options={({route}) => ({
+                headerTitle: route.name === 'Category' ? 'category' : null
+            })}/>
             <Tab.Screen name={'Search'} component={SearchScene}/>
         </Tab.Navigator>
     )

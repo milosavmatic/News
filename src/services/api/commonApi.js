@@ -4,7 +4,7 @@ export const defaultHeaders = {
 }
 
 export const authHeaders = () => {
-    const keyApi = 'eccd12aacf0646f8a45b1645b3d24b0c'
+    const keyApi = 'fc0f060cda6d4f7f95e2ca5e0bc6a6d7'
     return {
         ...defaultHeaders,
         Authorization: `Bearer ${keyApi}`
@@ -18,6 +18,3 @@ export const methodType = {
     delete: 'DELETE'
 }
 
-export const toJson = (content) => {
-    return JSON.stringify(content)
-}
