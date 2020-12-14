@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from './duck/actions'
-import { View, TextInput, FlatList } from 'react-native'
+import { View, TextInput, FlatList,TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { styles } from './styles'
 import ItemNewsContainer from '../../components/itemNews/itemNewsContiner';
 
@@ -42,9 +42,10 @@ class SearchScene extends React.Component {
         return <View style={{alignItems: 'center'}}>
             <TextInput style={styles.textInput}
                        onChangeText={(text) => this.onSearch(text.toLowerCase())} value={searchField} placeholder={'Searching...'}/>
+                       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <FlatList data={articles} renderItem={this.renderItem} keyExtractor={(item => item.url.toString() || item.urlToImage.toString())}
-
             />
+                       </TouchableWithoutFeedback>
         </View>
     }
 }
