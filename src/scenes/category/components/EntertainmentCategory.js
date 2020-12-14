@@ -45,7 +45,7 @@ class EntertainmentCategory extends React.Component {
                     style={{fontSize: 25, fontWeight: 'bold'}}>{'Entertainment'}</Text></TouchableOpacity>
                 <Carousel data={entertainmentCategory.slice(0, 5)} renderItem={this.renderItem}
                           sliderWidth={Dimensions.get('window').width}
-                          itemWidth={Dimensions.get('window').width} autoplay={Platformtrue} enableMomentum={false}
+                          itemWidth={Dimensions.get('window').width} autoplay={true} enableMomentum={false}
                           lockScrollWhileSnapping={true} autoplayInterval={3000} loop={true} enableSnapје={true}/>
             </View>
         )
